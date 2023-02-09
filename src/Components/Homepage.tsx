@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { PokemonDetails } from '../typings';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Search from './Search';
 
 const Homepage = () => {
@@ -8,22 +8,30 @@ const Homepage = () => {
 	const navigate = useNavigate();
 
 	return (
-		<div className='page'>
+		<div className='page homepage'>
+			<Link to={'/team'} className='homepage__link'>
+				My Team
+			</Link>
 			<h1>Pokemon World</h1>
-			<Search setPokemon={setPokemon} />
 			<h2>Search Pokemon</h2>
+			<Search setPokemon={setPokemon} />
 			{pokemon && (
-				<div
-					className='pokemon__details'
-					onClick={() => navigate(`/${pokemon.name}`)}
-				>
-					<h3 className='pokemon__name'>{pokemon.name}</h3>
-					<img
-						src={pokemon.sprites.front_default}
-						alt={pokemon.name}
-						className='pokemon__image'
-					/>
-				</div>
+				<>
+					<h4>
+						Result for: <span>{pokemon.name}</span>
+					</h4>
+					<div
+						className='pokemon__details'
+						onClick={() => navigate(`/${pokemon.name}`)}
+					>
+						<h3 className='pokemon__name'>{pokemon.name}</h3>
+						<img
+							src={pokemon.sprites.front_default}
+							alt={pokemon.name}
+							className='pokemon__image'
+						/>
+					</div>
+				</>
 			)}
 		</div>
 	);

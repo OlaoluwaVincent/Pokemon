@@ -13,6 +13,9 @@ const Search = ({ setPokemon }: Props) => {
 	const [errorMessage, setErrorMessage] = useState<string>('');
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		if (userInput.length < 1) {
+			return setErrorMessage('Please enter a valid term');
+		}
 		setErrorMessage('Searching...');
 		fetch(`https://pokeapi.co/api/v2/pokemon/${userInput.toLowerCase()}`)
 			.then((response) => response.json())
@@ -20,33 +23,29 @@ const Search = ({ setPokemon }: Props) => {
 				setPokemon(data);
 				setErrorMessage('');
 			})
-			.catch((error) =>
-				setErrorMessage('Sorry, we do not have this pokemon')
-			);
+			.catch((error) => {
+				setErrorMessage('Sorry, we do not have this pokemon');
+				setPokemon(undefined);
+			});
 	};
 	return (
-		<form onSubmit={handleSubmit} className='form'>
-			<input
-				type='text'
-				placeholder='Search for Pokemon'
-				value={userInput}
-				onChange={(e) => setUserInput(e.target.value)}
-				className='form__input'
-			/>
-			<button
-				type='submit'
-				style={{ background: 'transparent', border: 'none' }}
-				className='form__button'
-			>
-				<MdSearch />
-			</button>
+		<>
+			<form onSubmit={handleSubmit} className='form'>
+				<input
+					type='text'
+					placeholder='Search for Pokemon'
+					value={userInput}
+					onChange={(e) => setUserInput(e.target.value)}
+					className='form__input'
+				/>
+				<button type='submit' className='form__button'>
+					<MdSearch className='form__svg' />
+				</button>
+			</form>
 			{errorMessage && (
-				<p className='form__error-message'>
-					{errorMessage}
-					{': '} <b>{userInput}</b>
-				</p>
+				<p className='form__error-message'>{errorMessage} </p>
 			)}
-		</form>
+		</>
 	);
 };
 

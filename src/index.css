@@ -1,0 +1,318 @@
+*,
+::before,
+::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: #b8b8b8;
+	color: #1d1d1d;
+	font-family: 'Poppins', sans-serif;
+}
+
+.page {
+	height: 100vh;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+h1,
+h2 {
+	font-weight: 700;
+}
+h3,
+h4 {
+	font-weight: 500;
+}
+h4 > span {
+	text-transform: capitalize;
+}
+p {
+	line-height: 22px;
+}
+/* Homepage */
+.homepage {
+	gap: 20px;
+	align-items: center;
+	justify-content: center;
+}
+.homepage > h2 {
+	margin-top: 30px;
+	font-weight: 500;
+}
+.homepage h4 {
+	font-weight: 100;
+	color: #1d1d1d !important;
+}
+.homepage__link {
+	position: absolute;
+	top: 20%;
+	text-decoration: none;
+	font-size: 20px;
+	color: #1d1d1d;
+	cursor: pointer;
+}
+/* Form */
+.form {
+	width: 80%;
+	position: relative;
+}
+.form__input {
+	width: 100%;
+	height: 32px;
+	border: none;
+	border-radius: 5px;
+	padding: 10px;
+	outline: transparent;
+}
+.form__button {
+	background-color: #e0e0e0;
+	border: none;
+	height: 100%;
+	width: 35px;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	translate: 0 -50%;
+	cursor: pointer;
+	border-radius: 0 5px 5px 0;
+}
+.form__svg {
+	height: 20px;
+	width: 20px;
+}
+.form__error-message,
+.homepage h4 {
+	text-align: center;
+	font-weight: 100;
+	font-size: 13px;
+	color: #c20f1e;
+}
+/* Pokemon */
+.pokemon__name {
+	text-transform: capitalize;
+}
+.pokemon__more-details {
+	position: relative;
+}
+.pokemon__details {
+	cursor: pointer;
+}
+
+.pokemon__header {
+	display: flex;
+	color: #fff;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 10%;
+	font-weight: 500;
+	text-transform: capitalize;
+	letter-spacing: 2px;
+}
+.pokemon__header > h4 {
+	font-weight: 700;
+}
+.pokemon__image--big {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 10;
+}
+.pokemon__image--big > img {
+	display: block;
+	height: 150px;
+	width: 150px;
+	background: red;
+	margin: 50px 0 0;
+}
+.pokemon__addToTeam {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	cursor: pointer;
+	font-size: 13px;
+}
+
+.pokemon__types {
+	display: flex;
+	width: 50%;
+	justify-content: center;
+	gap: 30px;
+	align-items: center;
+	z-index: 10;
+}
+
+.pokemon__type {
+	background-color: #666666;
+	color: #fff;
+	padding: 5px;
+	font-size: 13px;
+	text-transform: capitalize;
+	border-radius: 20px;
+	margin-top: 10px;
+}
+
+.pokemon__about {
+	position: absolute;
+	top: 40%;
+	left: 0;
+	transform: 0 -40%;
+	background: #fff;
+	z-index: 1;
+	border-radius: 20px 20px 0 0;
+	padding-bottom: 30px;
+	width: 100%;
+}
+.h4 {
+	text-align: center;
+	margin-top: 120px;
+}
+
+.pokemon__about h4 {
+	font-weight: 700;
+	letter-spacing: 1px;
+	line-height: 30px;
+	text-transform: uppercase;
+	margin-bottom: 7px;
+}
+
+.pokemon__about--container {
+	display: flex;
+	justify-content: space-around;
+}
+
+.pokemon__about--container p {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-size: 13px;
+}
+
+.pokemon__about--content {
+	font-weight: 700;
+}
+.pokemon__about--description {
+	font-weight: 200;
+}
+
+.pokemon__ability {
+	text-align: center;
+	margin-top: 40px;
+}
+
+.pokemon__listItems {
+	display: flex;
+	justify-content: center;
+	list-style: none;
+	font-size: 13px;
+	gap: 10px;
+	text-transform: capitalize;
+}
+
+.pokemon__description {
+	padding: 0 10%;
+}
+
+.pokemon__description h4 {
+	margin-top: 50px;
+	font-weight: 700;
+	text-align: center;
+	letter-spacing: 0.7px;
+}
+.description {
+	font-size: 13px;
+}
+
+.pokemon__moves {
+	text-align: center;
+	margin-top: 30px;
+	padding: 0 10%;
+}
+.pokemon__moves--listItems {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-align: center;
+	list-style: none;
+	font-size: 13px;
+	gap: 8px;
+}
+
+.pokemon__moves--listitem:not(:last-child) {
+	margin: 0;
+	text-transform: capitalize;
+	display: block;
+	padding: 0 8px 0 0;
+	border-right: 2px solid #1d1d1d;
+}
+
+/* Media Queries */
+
+@media (min-width: 425px) {
+	.form {
+		width: 300px;
+		height: 40px;
+	}
+	.form__input {
+		height: 100%;
+	}
+	.form__button {
+		height: 100%;
+		width: 40px;
+	}
+	.form__error-message {
+		font-size: 15px;
+	}
+	.description {
+		font-size: 15px;
+	}
+}
+
+@media (min-width: 1024px) {
+	body {
+		font-size: 150%;
+	}
+	.pokemon__image--big > img {
+		height: 300px;
+		width: 300px;
+	}
+
+	.pokemon__types {
+		justify-content: center;
+		gap: 50px;
+	}
+	.pokemon__type {
+		font-size: 15px;
+		padding: 10px;
+	}
+	.pokemon__about {
+		top: 50%;
+	}
+	.h4 {
+		margin-top: 220px;
+	}
+	.pokemon__about--content,
+	.pokemon__about--description {
+		font-size: 15px;
+	}
+	.pokemon__listItems {
+		gap: 40px;
+		font-size: 15px;
+	}
+	.pokemon__moves--listItems {
+		font-size: 15px;
+	}
+	.description {
+		font-size: 16px;
+		line-height: 24px;
+		width: 80%;
+		margin: 0 auto;
+	}
+	.pokemon__addToTeam {
+		font-size: 15px;
+	}
+}
