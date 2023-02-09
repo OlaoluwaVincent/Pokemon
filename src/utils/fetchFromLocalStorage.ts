@@ -1,4 +1,9 @@
-export const FetchTeam = (idToMatch: any, setAdded: any) => {
+import { PokemonDetails } from '../typings';
+
+export const FetchTeam = (
+	idToMatch: number,
+	setAdded: React.Dispatch<React.SetStateAction<boolean>>
+) => {
 	setAdded(false);
 	// Fetch from localStorage
 	const res = localStorage.getItem('pokemon');
@@ -15,7 +20,10 @@ export const FetchTeam = (idToMatch: any, setAdded: any) => {
 	}
 };
 
-export const AddToTeam = (itemToAdd: any, setAdded: any): void => {
+export const AddToTeam = (
+	itemToAdd: PokemonDetails,
+	setAdded: React.Dispatch<React.SetStateAction<boolean>>
+): void => {
 	setAdded(false);
 	// getItem from localStorage
 	let res = localStorage.getItem('pokemon');
@@ -27,6 +35,11 @@ export const AddToTeam = (itemToAdd: any, setAdded: any): void => {
 	} else {
 		// update Team in localStorage
 		const data = JSON.parse(res);
+		if (data.length >= 6) {
+			alert('You cannot have more than 6 pokemons');
+			return;
+		}
+
 		data.push(itemToAdd);
 		localStorage.setItem('pokemon', JSON.stringify(data));
 		setAdded(true);
@@ -34,8 +47,8 @@ export const AddToTeam = (itemToAdd: any, setAdded: any): void => {
 };
 
 export const RemoveFromTeam = (
-	idToDelete: number | undefined,
-	setAdded: any
+	idToDelete: number,
+	setAdded: React.Dispatch<React.SetStateAction<boolean>>
 ): void => {
 	//getItem from localStorage
 	let res = localStorage.getItem('pokemon');
@@ -49,10 +62,18 @@ export const RemoveFromTeam = (
 	}
 };
 
-export const FetchMyTeam = () => {
+export const FetchMyTeam = (
+	setDeleted: React.Dispatch<React.SetStateAction<boolean>>,
+	deleted: boolean
+) => {
 	const res = localStorage.getItem('pokemon');
 	if (res) {
-		const items = JSON.parse(res);
-		return items;
+		const items: PokemonDetails[] = JSON.parse(res);
+		if (deleted == true) {
+			return items;
+		} else {
+			setDeleted(true);
+			return items;
+		}
 	}
 };

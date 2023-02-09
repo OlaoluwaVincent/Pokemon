@@ -35,7 +35,7 @@ interface Moves {
 		name: string;
 	};
 }
-interface Types {
+export interface Types {
 	type: {
 		name: string;
 		url: string;
@@ -50,7 +50,7 @@ interface Stats {
 		};
 	};
 }
-interface Abilities {
+export interface Abilities {
 	ability: {
 		name: string;
 	};

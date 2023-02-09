@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-import Homepage from '../Components/Homepage';
-import PokemonDetail from '../Components/PokemonDetail';
-import Team from '../Components/Team';
+import Homepage from './Homepage';
+import PokemonDetail from './PokemonDetail';
+import Team from './Team';
 
 type Props = {};
 

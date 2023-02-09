@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { PokemonDetails } from '../typings';
 import { useNavigate, Link } from 'react-router-dom';
-import Search from './Search';
+import Search from '../Components/Search';
 
 const Homepage = () => {
 	const [pokemon, setPokemon] = useState<PokemonDetails | undefined>();

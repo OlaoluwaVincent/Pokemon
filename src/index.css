@@ -13,7 +13,7 @@ body {
 }
 
 .page {
-	height: 100vh;
+	height: max-content;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -32,6 +32,11 @@ h4 > span {
 }
 p {
 	line-height: 22px;
+}
+img {
+	width: 100%;
+	height: 100%;
+	display: block;
 }
 /* Homepage */
 .homepage {
@@ -123,11 +128,10 @@ p {
 	z-index: 10;
 }
 .pokemon__image--big > img {
-	display: block;
-	height: 150px;
-	width: 150px;
-	background: red;
 	margin: 50px 0 0;
+	height: 100px;
+	width: 100px;
+	object-fit: cover;
 }
 .pokemon__addToTeam {
 	display: flex;
@@ -135,6 +139,7 @@ p {
 	gap: 5px;
 	cursor: pointer;
 	font-size: 13px;
+	margin-top: 10px;
 }
 
 .pokemon__types {
@@ -149,10 +154,10 @@ p {
 .pokemon__type {
 	background-color: #666666;
 	color: #fff;
-	padding: 5px;
+	padding: 2px 5px;
 	font-size: 13px;
 	text-transform: capitalize;
-	border-radius: 20px;
+	border-radius: 10px;
 	margin-top: 10px;
 }
 
@@ -160,7 +165,6 @@ p {
 	position: absolute;
 	top: 40%;
 	left: 0;
-	transform: 0 -40%;
 	background: #fff;
 	z-index: 1;
 	border-radius: 20px 20px 0 0;
@@ -250,6 +254,69 @@ p {
 	border-right: 2px solid #1d1d1d;
 }
 
+/* userPokemon */
+
+.userPokemon {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	flex-wrap: wrap;
+	flex-direction: row;
+	gap: 10px;
+	padding: 10% 10px;
+}
+
+.userPokemon__container {
+	background-color: #666666;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	border-radius: 16px;
+	width: 140px;
+	position: relative;
+	overflow: hidden;
+}
+
+.userPokemon img {
+	height: 100px;
+	aspect-ratio: 1/2;
+	object-fit: cover;
+}
+.userPokemon h4 {
+	color: #fff;
+	align-self: flex-end;
+	font-size: 90%;
+}
+
+.userPokemon a {
+	text-transform: capitalize;
+	font-size: 15px;
+	margin-bottom: 25px;
+	color: #fff;
+	text-align: center;
+}
+.userPokemon p {
+	margin: 0;
+	text-align: center;
+	background: #1d1d1d;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 8px;
+	color: #fff;
+	font-size: 13px;
+	border-top: 1px solid #fff;
+}
+.unavailable {
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-weight: 700;
+	font-size: 13px;
+}
 /* Media Queries */
 
 @media (min-width: 425px) {
@@ -270,6 +337,13 @@ p {
 	.description {
 		font-size: 15px;
 	}
+	.userPokemon {
+		align-items: center;
+		gap: 30px;
+	}
+	.userPokemon__container {
+		height: max-content;
+	}
 }
 
 @media (min-width: 1024px) {
@@ -277,8 +351,9 @@ p {
 		font-size: 150%;
 	}
 	.pokemon__image--big > img {
-		height: 300px;
-		width: 300px;
+		height: 200px;
+		width: 200px;
+		object-fit: cover;
 	}
 
 	.pokemon__types {
@@ -287,13 +362,13 @@ p {
 	}
 	.pokemon__type {
 		font-size: 15px;
-		padding: 10px;
+		padding: 4px 10px;
 	}
 	.pokemon__about {
 		top: 50%;
 	}
 	.h4 {
-		margin-top: 220px;
+		margin-top: 120px;
 	}
 	.pokemon__about--content,
 	.pokemon__about--description {
@@ -306,6 +381,11 @@ p {
 	.pokemon__moves--listItems {
 		font-size: 15px;
 	}
+	.pokemon__moves {
+		width: 80%;
+		margin: 0 auto;
+		margin-top: 30px;
+	}
 	.description {
 		font-size: 16px;
 		line-height: 24px;
@@ -314,5 +394,36 @@ p {
 	}
 	.pokemon__addToTeam {
 		font-size: 15px;
+	}
+	/* userPokemon */
+
+	.userPokemon {
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		padding: 10% 10px;
+		align-content: center;
+	}
+
+	.userPokemon__container {
+		padding: 25px;
+		gap: 15px;
+		border-radius: 10px;
+		width: 200px;
+	}
+	.userPokemon h4 {
+		color: #fff;
+		align-self: flex-end;
+		font-size: 14px;
+	}
+
+	.userPokemon h5 {
+		font-size: 17px;
+	}
+	.userPokemon p {
+		font-size: 15px;
+	}
+	.unavailable {
+		font-size: 16px;
 	}
 }
