@@ -270,6 +270,7 @@ img {
 
 .userPokemon__container {
 	background-color: #666666;
+	height: max-content;
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
@@ -411,6 +412,7 @@ img {
 		gap: 15px;
 		border-radius: 10px;
 		width: 200px;
+		height: max-content;
 	}
 	.userPokemon h4 {
 		color: #fff;
