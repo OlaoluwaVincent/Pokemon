@@ -17,7 +17,7 @@ const Homepage = () => {
 			<Search setPokemon={setPokemon} />
 			{pokemon && (
 				<>
-					<h4>
+					<h4 className='result'>
 						Result for: <span>{pokemon.name}</span>
 					</h4>
 					<div

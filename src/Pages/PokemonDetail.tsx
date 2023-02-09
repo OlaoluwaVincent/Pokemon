@@ -40,30 +40,34 @@ const PokemonDetail = () => {
 	}
 
 	return (
-		<div className='page pokemon__more-details'>
-			<div className='pokemon__header'>
-				<h1>{data.name}</h1>
-				<Link to={'/team'} className='pokemon__details--link'>
-					My Team
-				</Link>
-				<Link to={'/'} className='pokemon__details--link'>
-					Homepage
-				</Link>
-				<h4>#{data.id}</h4>
-			</div>
+		<>
+			<div className='page pokemon__more-details'>
+				<div className='pokemon__header'>
+					<Link to={'/team'} className='pokemon__details--link'>
+						My Team
+					</Link>
+					<Link to={'/'} className='pokemon__details--link'>
+						Homepage
+					</Link>
+				</div>
+				<div className='pokemon__header'>
+					<h1>{data.name}</h1>
+					<h4>#{data.id}</h4>
+				</div>
 
-			<div className='pokemon__image--big'>
-				<img src={data.sprites.front_default} alt={data.name} />
-				<PokemonTypes data={data.types} />
-				<CheckTeamData state={setAdded} data={data} added={added} />
+				<div className='pokemon__image--big'>
+					<img src={data.sprites.front_default} alt={data.name} />
+					<PokemonTypes data={data.types} />
+					<CheckTeamData state={setAdded} data={data} added={added} />
+				</div>
+				<div className='pokemon__about'>
+					<AboutPokemon data={data} />
+					<PokemonAbilities data={data.abilities} />
+					<PokemonMoves data={data.moves} />
+					<PokemonDescription id={data.id} />
+				</div>
 			</div>
-			<div className='pokemon__about'>
-				<AboutPokemon data={data} />
-				<PokemonAbilities data={data.abilities} />
-				<PokemonMoves data={data.moves} />
-				<PokemonDescription id={data.id} />
-			</div>
-		</div>
+		</>
 	);
 };
 

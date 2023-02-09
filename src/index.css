@@ -48,13 +48,10 @@ img {
 	margin-top: 30px;
 	font-weight: 500;
 }
-.homepage h4 {
-	font-weight: 100;
-	color: #1d1d1d !important;
-}
+
 .homepage__link {
 	position: absolute;
-	top: 20%;
+	top: 12%;
 	text-decoration: none;
 	font-size: 20px;
 	color: #1d1d1d;
@@ -76,7 +73,7 @@ img {
 .form__button {
 	background-color: #e0e0e0;
 	border: none;
-	height: 100%;
+	height: 32px;
 	width: 35px;
 	position: absolute;
 	top: 50%;
@@ -95,6 +92,10 @@ img {
 	font-weight: 100;
 	font-size: 13px;
 	color: #c20f1e;
+}
+.homepage h4 {
+	font-weight: 400;
+	color: #1d1d1d;
 }
 /* Pokemon */
 .pokemon__name {
@@ -163,7 +164,7 @@ img {
 
 .pokemon__about {
 	position: absolute;
-	top: 40%;
+	top: 50%;
 	left: 0;
 	background: #fff;
 	z-index: 1;
@@ -173,7 +174,7 @@ img {
 }
 .h4 {
 	text-align: center;
-	margin-top: 120px;
+	margin-top: 80px;
 }
 
 .pokemon__about h4 {
@@ -322,13 +323,13 @@ img {
 @media (min-width: 425px) {
 	.form {
 		width: 300px;
-		height: 40px;
+		height: max-content;
 	}
 	.form__input {
-		height: 100%;
+		height: 40px;
 	}
 	.form__button {
-		height: 100%;
+		height: 40px;
 		width: 40px;
 	}
 	.form__error-message {
@@ -365,7 +366,7 @@ img {
 		padding: 4px 10px;
 	}
 	.pokemon__about {
-		top: 50%;
+		top: 60%;
 	}
 	.h4 {
 		margin-top: 120px;
