@@ -61,6 +61,8 @@ img {
 .form {
 	width: 80%;
 	position: relative;
+	display: flex;
+	align-items: center;
 }
 .form__input {
 	width: 100%;
@@ -74,7 +76,7 @@ img {
 	background-color: #e0e0e0;
 	border: none;
 	height: 32px;
-	width: 35px;
+	width: 40px;
 	position: absolute;
 	top: 50%;
 	right: 0;
@@ -89,7 +91,7 @@ img {
 .form__error-message,
 .homepage h4 {
 	text-align: center;
-	font-weight: 100;
+	font-weight: 400;
 	font-size: 13px;
 	color: #c20f1e;
 }
