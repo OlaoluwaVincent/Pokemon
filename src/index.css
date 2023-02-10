@@ -313,6 +313,7 @@ img {
 	color: #fff;
 	font-size: 13px;
 	border-top: 1px solid #fff;
+	cursor: pointer;
 }
 .unavailable {
 	justify-content: center;
