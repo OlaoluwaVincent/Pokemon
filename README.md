@@ -1,5 +1,5 @@
 # Pokemon
-The utilizes PokeApi
+This app utilizes PokeApi
 Use the https://pokeapi.co/
 
 **Pokemon Web App User Stories**
