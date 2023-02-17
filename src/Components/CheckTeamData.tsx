@@ -1,21 +1,36 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { PokemonDetails } from '../typings';
 import { AddToTeam, RemoveFromTeam } from '../utils/fetchFromLocalStorage';
 import { MdAdd, MdRemove } from 'react-icons/md';
 
 type Props = {
-	state: React.Dispatch<React.SetStateAction<boolean>>;
 	data: PokemonDetails;
-	added: boolean;
 };
 
-const CheckTeamData = ({ state, data, added }: Props) => {
+const CheckTeamData = ({ data }: Props) => {
+	const [available, setAvailable] = useState<boolean>();
+
+	useEffect(() => {
+		// Fetch from localStorage
+		const res = localStorage.getItem('pokemon');
+		if (res) {
+			const items: PokemonDetails[] = JSON.parse(res);
+			// Find pokemon in localStorage and return
+			const pokemonToMatch = items.find((pokemon: PokemonDetails) => {
+				return pokemon.id === data.id;
+			});
+			if (pokemonToMatch) {
+				setAvailable(true);
+			}
+		}
+	}, []);
+
 	return (
 		<>
-			{added ? (
+			{available ? (
 				<div
 					className='pokemon__addToTeam'
-					onClick={() => RemoveFromTeam(data.id, state)}
+					onClick={() => RemoveFromTeam(data.id, setAvailable)}
 				>
 					<MdRemove className='form__svg' />
 					Remove from Team
@@ -23,7 +38,7 @@ const CheckTeamData = ({ state, data, added }: Props) => {
 			) : (
 				<div
 					className='pokemon__addToTeam'
-					onClick={() => AddToTeam(data, state)}
+					onClick={() => AddToTeam(data, setAvailable)}
 				>
 					<MdAdd className='form__svg' />
 					Add to Team

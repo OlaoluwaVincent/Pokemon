@@ -1,7 +1,6 @@
 import { Link, Params, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { PokemonDetails } from '../typings';
-import { FetchTeam } from '../utils/fetchFromLocalStorage';
 import CheckTeamData from '../Components/CheckTeamData';
 import AboutPokemon from '../Components/AboutPokemon';
 import PokemonAbilities from '../Components/PokemonAbilities';
@@ -11,7 +10,7 @@ import PokemonTypes from '../Components/PokemonTypes';
 
 const PokemonDetail = () => {
 	const [data, setData] = useState<PokemonDetails | undefined>();
-	const [added, setAdded] = useState<boolean>(false);
+
 	const { pokemonName }: Readonly<Params<string>> = useParams();
 
 	// Useffect onMount
@@ -26,14 +25,10 @@ const PokemonDetail = () => {
 				})
 				.catch((error) => console.log(error));
 		}
-
-		// if data is available re-render
-		if (data) FetchTeam(data.id, setAdded);
-
 		return () => {
 			mount = false;
 		};
-	}, [pokemonName, added, data?.id]);
+	}, [pokemonName]);
 
 	if (!data) {
 		return <p>Loading...</p>;
@@ -43,11 +38,11 @@ const PokemonDetail = () => {
 		<>
 			<div className='page pokemon__more-details'>
 				<div className='pokemon__header'>
-					<Link to={'/team'} className='pokemon__details--link'>
-						My Team
-					</Link>
 					<Link to={'/'} className='pokemon__details--link'>
 						Homepage
+					</Link>
+					<Link to={'/team'} className='pokemon__details--link'>
+						My Team
 					</Link>
 				</div>
 				<div className='pokemon__header'>
@@ -58,7 +53,7 @@ const PokemonDetail = () => {
 				<div className='pokemon__image--big'>
 					<img src={data.sprites.front_default} alt={data.name} />
 					<PokemonTypes data={data.types} />
-					<CheckTeamData state={setAdded} data={data} added={added} />
+					<CheckTeamData data={data} />
 				</div>
 				<div className='pokemon__about'>
 					<AboutPokemon data={data} />

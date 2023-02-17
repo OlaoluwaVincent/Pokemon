@@ -1,30 +1,28 @@
-import { PokemonDetails } from '../typings';
-import { FetchMyTeam, RemoveFromTeam } from '../utils/fetchFromLocalStorage';
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { PokemonDetails } from '../typings';
+import { RemoveFromTeam } from '../utils/fetchFromLocalStorage';
 
 const Team = () => {
 	const [data, setData] = useState<PokemonDetails[]>();
-	const [deleted, setDeleted] = useState<boolean>(true);
-	const navigate = useNavigate();
+	const [available, setAvailable] = useState<boolean | undefined>();
 
 	useEffect(() => {
 		let mount = true;
 		if (mount) {
-			const result = FetchMyTeam(setDeleted, deleted);
-			setData(result);
+			const res = localStorage.getItem('pokemon');
+			if (res) {
+				const items = JSON.parse(res);
+				if (items) {
+					setData(items);
+					setAvailable(true);
+				}
+			}
 		}
 		return () => {
 			mount = false;
 		};
-	}, [deleted]);
-
-	if (!data || data?.length < 1) {
-		return (
-			<p className='page unavailable'>Add pokemons to team to see them</p>
-		);
-	}
-
+	}, [available]);
 	return (
 		<>
 			<Link
@@ -32,27 +30,38 @@ const Team = () => {
 				style={{ textAlign: 'center', display: 'block' }}
 				className='pokemon__details--link'
 			>
-				Homepage
+				{data?.length ? 'Homepage' : 'Search Pokemon'}
 			</Link>
 			<div className='page userPokemon'>
-				{data?.map((pokemon) => (
-					<div key={pokemon.name} className='userPokemon__container'>
-						<h4>#{pokemon.id}</h4>
-						<img
-							src={pokemon.sprites.front_default}
-							alt={pokemon.name}
-						/>
-						<Link to={`/${pokemon.name}`}>{pokemon.name}</Link>
+				{!data ||
+					(data?.length < 1 && (
+						<div className='unavailable'>
+							Add pokemons to team to see them
+						</div>
+					))}
 
-						<p
-							onClick={() =>
-								RemoveFromTeam(pokemon.id, setDeleted)
-							}
+				{data &&
+					data.map((pokemon) => (
+						<div
+							key={pokemon.name}
+							className='userPokemon__container'
 						>
-							Delete
-						</p>
-					</div>
-				))}
+							<h4>#{pokemon.id}</h4>
+							<img
+								src={pokemon.sprites.front_default}
+								alt={pokemon.name}
+							/>
+							<Link to={`/${pokemon.name}`}>{pokemon.name}</Link>
+
+							<p
+								onClick={() =>
+									RemoveFromTeam(pokemon.id, setAvailable)
+								}
+							>
+								Delete
+							</p>
+						</div>
+					))}
 			</div>
 		</>
 	);

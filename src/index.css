@@ -316,8 +316,7 @@ img {
 	cursor: pointer;
 }
 .unavailable {
-	justify-content: center;
-	align-items: center;
+	margin-top: 30px;
 	text-align: center;
 	font-weight: 700;
 	font-size: 13px;
